@@ -1,7 +1,7 @@
 {
 	"manifestVersion": 1,
 	"id": "vsts-deploy-MSI",
-	"version": "1.0.0",
+	"version": "1.0.2",
 	"name": "Install MSI",
 	"description": "Install MSI file",
 	"publisher": "ivanboyko",
@@ -41,11 +41,11 @@
 			"uri": "https://github.com/IvanBoyko/vsts-install-MSI/blob/master/LICENSE"
 		},
 		"support": {
-			"uri": "https://github.com/IvanBoyko/vsts-trigger/issues"
+			"uri": "https://github.com/IvanBoyko/vsts-install-MSI/issues"
 		}
 	},
 	"icons": {
-		"default": "images/logo.png"
+		"default": "images/logo_128.png"
 	 },
 	"files": [
 		{
@@ -55,7 +55,7 @@
 			"path": "Tasks/InstallMSI/task.json"
 		},
 		{
-			"path": "images/logo.png"
+			"path": "images/logo_32.png"
 		}
 	],
 	"contributions": [
