@@ -5,7 +5,10 @@
 [CmdletBinding()]
 Param(
 	[Parameter(Mandatory=$False)]
-	[string] $msi_dir = (Split-Path $MyInvocation.MyCommand.Path),
+	[string] $msi_Dir = (Split-Path $MyInvocation.MyCommand.Path),
+	
+	[Parameter(Mandatory=$False)]
+	[string] $msi_FilesMask = '*.msi',
 	
 	[Parameter(Mandatory=$False)]
 	[string] $EnvVarRegex = '^ENV_'
@@ -15,7 +18,6 @@ Param(
 # Constants
 #
 $errorActionPreference = "Stop"
-$msiFilesMask = '*.msi'
 
 
 #
@@ -69,7 +71,7 @@ function InstallMsi([string] $msi_file, $msi_params) {
 
 function InstallMsiFilesFromDir([string]$msi_dir, [string]$msi_params) {
 	Write-Host "Looking for MSI files in the dir ""$msi_dir"""
-	$msi_files = @(Get-ChildItem (Join-Path $msi_dir $msiFilesMask))
+	$msi_files = @(Get-ChildItem (Join-Path $msi_dir $msi_FilesMask))
 
 	# Install each MSI one by one
 	$msi_files | %{

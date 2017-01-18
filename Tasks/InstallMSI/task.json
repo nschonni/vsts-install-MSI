@@ -8,10 +8,10 @@
     "author": "Ivan Boyko",
     "version": {
         "Major": 1,
-        "Minor": 0,
-        "Patch": 2
+        "Minor": 1,
+        "Patch": 0
     },
-    "instanceNameFormat": "Install MSI files $(msi_FilesMask) from directory $(msi_Dir)",
+    "instanceNameFormat": "Install $(msi_FilesMask) from $(msi_Dir)",
     "groups": [
         {
             "name": "advanced",
@@ -24,7 +24,7 @@
             "name": "msi_Dir",
             "type": "filePath",
             "label": "Directory",
-            "defaultValue": "",
+            "defaultValue": "$(System.DefaultWorkingDirectory)",
             "required": true,
             "helpMarkDown": "A directory containing MSI files"
         },
