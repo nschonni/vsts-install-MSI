@@ -64,7 +64,12 @@ function InstallMsi([string] $msi_file, $msi_params) {
 		Write-Host "Installed successfully"
 		$script:msi_installed += $msi_file
 	} else {
-		Write-Host "ERROR: cannot install $msi_file, msiexec exit code is $exitCode, see the log file " (Split-Path $log_file -Leaf) " and MSDN documentation: http://msdn.microsoft.com/en-us/library/aa376931(v=vs.85).aspx"
+		Write-Host "##vso[task.uploadfile]$log_file"
+
+		$error_message = "ERROR: cannot install $msi_file, msiexec exit code is $exitCode, see the log file " + (Split-Path $log_file -Leaf) + " and MSDN documentation: http://msdn.microsoft.com/en-us/library/aa376931(v=vs.85).aspx"
+		Write-Host $error_message
+		Write-Host "##vso[task.logissue type=error]" (hostname) ": " $error_message
+		
 		$script:msi_failed += $msi_file
 	}
 }

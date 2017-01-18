@@ -8,7 +8,7 @@
     "author": "Ivan Boyko",
     "version": {
         "Major": 1,
-        "Minor": 1,
+        "Minor": 2,
         "Patch": 0
     },
     "instanceNameFormat": "Install $(msi_FilesMask) from $(msi_Dir)",
