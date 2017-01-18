@@ -2,6 +2,8 @@
 
 VSTS extension to install \ deploy MSI as a build step in VSTS Release.
 
+![Logo](/images/logo.png)
+
 Allows to specify directory with MSI files and a file mask to match (*.msi by default)
 
 Also allows you to passes environment Variables as MSI properties.<br>
