@@ -1,0 +1,56 @@
+{
+    "id": "196dfe31-ac20-4069-b6d1-ae70e1e5b136",
+    "name": "ivanboyko.deploy.MSI",
+    "friendlyName": "Install MSI file",
+    "description": "Install (deploy) MSI files from a specified directory, optionally passing environment variables as MSI properties",
+    "helpMarkDown": "[More Information](https://github.com/IvanBoyko/vsts-install-MSI)",
+    "category": "Deploy",
+    "author": "Ivan Boyko",
+    "version": {
+        "Major": 1,
+        "Minor": 0,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Install MSI files $(msi_FilesMask) from directory $(msi_Dir)",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": true
+        }
+    ],
+    "inputs": [
+        {
+            "name": "msi_Dir",
+            "type": "filePath",
+            "label": "Directory",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "A directory containing MSI files"
+        },
+        {
+            "name": "msi_FilesMask",
+            "type": "string",
+            "label": "File mask",
+            "defaultValue": "*.msi",
+            "required": false,
+            "helpMarkDown": "File mask for MSI files"
+        },
+        {
+            "name": "EnvVarRegex",
+            "type": "string",
+            "label": "Regex to match environment variable names, to be passed to MSI as Windows Installer properties",
+            "defaultValue": "^$",
+            "required": false,
+            "helpMarkDown": "Example: ^(TARGETDIR|ENV_.*)$",
+            "groupName": "advanced"
+        }
+    ],
+    "execution": {
+		"PowerShell": {
+			"target": "$(currentDirectory)\\Deploy-MSI.ps1",
+			"argumentFormat": "",
+			"workingDirectory": "$(currentDirectory)"
+        }
+    }
+}

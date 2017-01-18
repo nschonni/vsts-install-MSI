@@ -1,0 +1,75 @@
+{
+	"manifestVersion": 1,
+	"id": "vsts-deploy-MSI",
+	"version": "1.0.0",
+	"name": "Install MSI",
+	"description": "Install MSI file",
+	"publisher": "ivanboyko",
+	"public": true,
+	"targets": [
+		{
+			"id": "Microsoft.VisualStudio.Services"
+			}
+		],
+	"scope": [
+		"vso.release"
+	],
+	"description": "Install (deploy) MSI files from a specified directory, optionally passing environment variables as MSI properties",
+	"tags": [
+		"release",
+		"deploy",
+		"install",
+		"MSI",
+		"Windows Installer",
+		"msiexec",
+		"tasks"
+	],
+	"content": {
+		"details": {
+			"path": "README.md"
+		},
+		"license": {
+			"path": "LICENSE",
+			"contentType": "text/plain"
+		}
+	},
+	"links": {
+		"getstarted": {
+			"uri": "https://github.com/IvanBoyko/vsts-install-MSI"
+		},
+		"license": {
+			"uri": "https://github.com/IvanBoyko/vsts-install-MSI/blob/master/LICENSE"
+		},
+		"support": {
+			"uri": "https://github.com/IvanBoyko/vsts-trigger/issues"
+		}
+	},
+	"icons": {
+		"default": "images/logo.png"
+	 },
+	"files": [
+		{
+			"path": "Tasks/InstallMSI/Deploy-MSI.ps1"
+		},
+		{
+			"path": "Tasks/InstallMSI/task.json"
+		},
+		{
+			"path": "images/logo.png"
+		}
+	],
+	"contributions": [
+		{
+			"id": "ivanboyko.deploy.MSI",
+			"name": "Install MSI file",
+			"type": "ms.vss-distributed-task.task",
+			"description": "Install (deploy) MSI files from a specified directory, optionally passing environment variables as MSI properties",
+			"targets": [
+				"ms.vss-distributed-task.tasks"
+				],
+			"properties": {
+				"name": "Tasks/InstallMSI"
+			}
+		}
+	]
+}
