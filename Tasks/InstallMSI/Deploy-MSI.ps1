@@ -41,7 +41,6 @@ function GetMsiParams() {
 		if ($key -cmatch '[a-z]') {
 			throw "ERROR: env var $key contains lowercase characters, while Public properties in Windows Installer must be all UPPERCASE, see this: https://msdn.microsoft.com/en-us/library/aa370912(v=vs.85).aspx"
 		}
-		# TODO: escape double quotes (") in values?
 
 		$KeyValueArray += "$key=`"$value`""
 	}
