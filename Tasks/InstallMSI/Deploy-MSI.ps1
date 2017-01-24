@@ -104,5 +104,8 @@ $logMessage = 'deployed ' + $msi_installed.Count + '; failed: ' + $msi_failed.Co
 Write-Host $logMessage
 
 if ($msi_failed.Count -ne 0) {
+	$logMessage = "ERROR: MSI installation failed"
+	$logMessage = "##vso[task.logissue type=error]$logMessage"
+	Write-Host $logMessages
 	exit 1
 }
