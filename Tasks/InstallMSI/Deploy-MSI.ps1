@@ -95,12 +95,14 @@ $msi_params = GetMsiParams
 InstallMsiFilesFromDir $msi_dir $msi_params
 
 Write-Host "Installation is finished"
-">>>>>>>>>>>>> Deployed: " + $msi_installed | Out-Host
-">>>>>>>>>>>>> Failed: " + $msi_failed | Out-Host
+$logMessage = ">>>>>>>>>>>>> Deployed: " + $msi_installed
+Write-Host $logMessage
+$logMessage = ">>>>>>>>>>>>> Failed: " + $msi_failed
+Write-Host $logMessage
 
 $logMessage = 'deployed ' + $msi_installed.Count + '; failed: ' + $msi_failed.Count
 Write-Host $logMessage
 
 if ($msi_failed.Count -ne 0) {
-	throw "ERROR: MSI installation failed"
+	exit 1
 }
