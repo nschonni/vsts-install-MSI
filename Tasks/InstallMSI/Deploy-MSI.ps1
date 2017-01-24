@@ -67,7 +67,9 @@ function InstallMsi([string] $msi_file, $msi_params) {
 
 		$error_message = "ERROR: cannot install $msi_file, msiexec exit code is $exitCode, see the log file " + (Split-Path $log_file -Leaf) + " and MSDN documentation: http://msdn.microsoft.com/en-us/library/aa376931(v=vs.85).aspx"
 		Write-Host $error_message
-		Write-Host "##vso[task.logissue type=error]" (hostname) ": " $error_message
+
+		$error_message = "##vso[task.logissue type=error]" + (hostname) + ": " + $error_message
+		Write-Host $error_message
 		
 		$script:msi_failed += $msi_file
 	}
@@ -93,12 +95,12 @@ $msi_params = GetMsiParams
 InstallMsiFilesFromDir $msi_dir $msi_params
 
 Write-Host "Installation is finished"
-Write-Host ">>>>>>>>>>>>> Deployed:" $msi_installed
-Write-Host ">>>>>>>>>>>>> Failed:" $msi_failed
+">>>>>>>>>>>>> Deployed: " + $msi_installed | Out-Host
+">>>>>>>>>>>>> Failed: " + $msi_failed | Out-Host
 
 $logMessage = 'deployed ' + $msi_installed.Count + '; failed: ' + $msi_failed.Count
 Write-Host $logMessage
 
 if ($msi_failed.Count -ne 0) {
-	exit 1
+	throw "ERROR: MSI installation failed"
 }
