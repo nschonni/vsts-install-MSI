@@ -49,7 +49,6 @@ function GetMsiParams() {
 }
 
 function InstallMsi([string] $msi_file, $msi_params) {
-	Write-Host "Installing $msi_file with parameters: " $msi_params
 
 	$log_file = "${msi_file}_install.log"
 
@@ -57,6 +56,7 @@ function InstallMsi([string] $msi_file, $msi_params) {
 	if ($msi_params) {
 		$parms += $msi_params
 	}
+	Write-Host "##[command]msiexec.exe $parms"
 	$exitCode = (Start-Process -FilePath msiexec.exe -ArgumentList $parms -Wait -Passthru).ExitCode
 
 	if ($exitCode -eq 0) {
@@ -106,6 +106,6 @@ Write-Host $logMessage
 if ($msi_failed.Count -ne 0) {
 	$logMessage = "ERROR: MSI installation failed"
 	$logMessage = "##vso[task.logissue type=error]$logMessage"
-	Write-Host $logMessages
+	Write-Host $logMessage
 	exit 1
 }

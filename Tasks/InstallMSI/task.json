@@ -9,7 +9,7 @@
     "version": {
         "Major": 1,
         "Minor": 2,
-        "Patch": 13
+        "Patch": 14
     },
     "instanceNameFormat": "Install $(msi_FilesMask) from $(msi_Dir)",
     "groups": [
