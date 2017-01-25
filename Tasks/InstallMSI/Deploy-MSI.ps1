@@ -49,7 +49,6 @@ function GetMsiParams() {
 }
 
 function InstallMsi([string] $msi_file, $msi_params) {
-
 	$log_file = "${msi_file}_install.log"
 
 	$parms = @("/i", $msi_file, "/qn", '/l*v', $log_file)
@@ -105,7 +104,7 @@ Write-Host $logMessage
 
 if ($msi_failed.Count -ne 0) {
 	$logMessage = "ERROR: MSI installation failed"
-	$logMessage = "##vso[task.logissue type=error]$logMessage"
+	$logMessage = "##vso[task.complete result=Failed]$logMessage"
 	Write-Host $logMessage
 	exit 1
 }
