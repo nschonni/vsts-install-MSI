@@ -14,7 +14,7 @@ Param(
 	[string] $EnvVarRegex = '^ENV_',
 	
 	[Parameter(Mandatory=$False)]
-	[bool] $AnalyseFailureRootCause = $True
+	[string] $AnalyseFailureRootCause = "true"
 )
 
 #
@@ -28,6 +28,8 @@ $errorActionPreference = "Stop"
 #
 $msi_installed = @()
 $msi_failed = @()
+
+[bool]$AnalyseFailureRootCause_bool = $AnalyseFailureRootCause -eq [bool]::TrueString # workaround to avoid using PowerShell3 handler that requires library to manage bool parameters (complexity!)
 
 
 #
@@ -87,7 +89,7 @@ function AnalyseFailureRootCause([Int64]$exitCode, [string]$log_file) {
 		}
 		1603	{
 			Write-Host "ERROR_INSTALL_FAILURE ($exitCode): A fatal error occurred during installation."
-			ParseLogFile $log_file 3
+			ParseLogFile $log_file 3 | Out-Null
 			break
 		}
 		1618	{
@@ -124,7 +126,7 @@ function InstallMsi([string] $msi_file, $msi_params) {
 	} else {
 		Write-Host "##vso[task.uploadfile]$log_file"
 
-		if ($AnalyseFailureRootCause) {
+		if ($AnalyseFailureRootCause_bool) {
 			AnalyseFailureRootCause $exitCode $log_file
 		}
 		

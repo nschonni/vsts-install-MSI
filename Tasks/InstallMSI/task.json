@@ -9,7 +9,7 @@
     "version": {
         "Major": 2,
         "Minor": 0,
-        "Patch": 3
+        "Patch": 7
     },
     "instanceNameFormat": "Install $(msiFilesMask) from $(msiDir)",
     "groups": [
@@ -49,7 +49,7 @@
             "name": "AnalyseFailureRootCause",
             "type": "boolean",
             "label": "Analyse log to find the root cause of failure",
-            "defaultValue": "True",
+            "defaultValue": true,
             "required": false,
             "helpMarkDown": "Found error is displayed in task log, so you don't have to download the full MSI installation log to diagnose",
             "groupName": "advanced"
@@ -57,9 +57,7 @@
     ],
     "execution": {
 		"PowerShell": {
-			"target": "$(currentDirectory)\\Deploy-MSI.ps1",
-			"argumentFormat": "",
-			"workingDirectory": "$(currentDirectory)"
+			"target": "Deploy-MSI.ps1"
         }
     }
 }
