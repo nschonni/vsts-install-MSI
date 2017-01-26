@@ -33,6 +33,11 @@ Add env var to pass to MSI:
 
 ![Add env var to pass to MSI](https://raw.githubusercontent.com/IvanBoyko/vsts-install-MSI/master/images/screenshot_3_add_env_var.png)
 
+# Compatibility
+
+* Visual Studio Team Services - tested
+* Team Foundation Server - not tested
+
 
 # TODO
 
