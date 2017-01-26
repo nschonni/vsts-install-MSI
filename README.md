@@ -1,6 +1,6 @@
 # vsts-install-MSI
 
-VSTS extension to install \ deploy MSI as a build step in VSTS Release.
+Extension to install \ deploy MSI as a build step in VSTS Release.
 
 ![Logo](https://raw.githubusercontent.com/IvanBoyko/vsts-install-MSI/master/images/icon.png)
 
@@ -14,6 +14,10 @@ VSTS extension to install \ deploy MSI as a build step in VSTS Release.
 Use cases:
  * redefine TARGETDIR to install to an arbitrary folder
  * pass property containing DB Connection String to be injected into Web.config during MSI installation
+
+4. In case of installation failure:
+ * verbose log is attached to the Release, to see it click "Download all logs as zip"
+ * it will try to analyse log to find out the root cause and show it in the task output (this might not work on non-English versions of Windows)
 
 # Example
 
@@ -32,5 +36,4 @@ Add env var to pass to MSI:
 
 # TODO
 
-- Parse install log file to find out the exact problem with installation ("value 3"), show it in Release summary
 - Escape double quotes (") in values of environment variables passed to MSI

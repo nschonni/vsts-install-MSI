@@ -7,11 +7,11 @@
     "category": "Deploy",
     "author": "Ivan Boyko",
     "version": {
-        "Major": 1,
-        "Minor": 2,
-        "Patch": 16
+        "Major": 2,
+        "Minor": 0,
+        "Patch": 3
     },
-    "instanceNameFormat": "Install $(msi_FilesMask) from $(msi_Dir)",
+    "instanceNameFormat": "Install $(msiFilesMask) from $(msiDir)",
     "groups": [
         {
             "name": "advanced",
@@ -21,7 +21,7 @@
     ],
     "inputs": [
         {
-            "name": "msi_Dir",
+            "name": "msiDir",
             "type": "filePath",
             "label": "Directory",
             "defaultValue": "$(System.DefaultWorkingDirectory)",
@@ -29,7 +29,7 @@
             "helpMarkDown": "A directory containing MSI files"
         },
         {
-            "name": "msi_FilesMask",
+            "name": "msiFilesMask",
             "type": "string",
             "label": "File mask",
             "defaultValue": "*.msi",
@@ -39,10 +39,19 @@
         {
             "name": "EnvVarRegex",
             "type": "string",
-            "label": "Regex to match environment variable names, to be passed to MSI as Windows Installer properties",
+            "label": "Env variables to pass to installer (regex)",
             "defaultValue": "^$",
             "required": false,
-            "helpMarkDown": "Example: ^(TARGETDIR|ENV_.*)$",
+            "helpMarkDown": "Environment variables with name matching this regex will be passed to MSI as Windows Installer properties. Example: ^(TARGETDIR|ENV_.*)$",
+            "groupName": "advanced"
+        },
+        {
+            "name": "AnalyseFailureRootCause",
+            "type": "boolean",
+            "label": "Analyse log to find the root cause of failure",
+            "defaultValue": "True",
+            "required": false,
+            "helpMarkDown": "Found error is displayed in task log, so you don't have to download the full MSI installation log to diagnose",
             "groupName": "advanced"
         }
     ],
