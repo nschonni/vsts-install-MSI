@@ -42,3 +42,13 @@ Add env var to pass to MSI:
 # TODO
 
 - Escape double quotes (") in values of environment variables passed to MSI
+
+
+# Support
+
+Extension is open source and free to use.
+But it's provided as is, without any responsibility, and is not guaranteed to work.
+Use at your own risk.
+
+However if you find any issue, feel free to raise it here:
+https://github.com/IvanBoyko/vsts-install-MSI/issues
