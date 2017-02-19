@@ -1,7 +1,7 @@
 {
 	"manifestVersion": 1,
 	"id": "vsts-deploy-MSI",
-	"version": "2.0.8",
+	"version": "2.0.12",
 	"name": "Install MSI",
 	"description": "Install MSI file",
 	"publisher": "ivanboyko",
