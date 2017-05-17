@@ -14,6 +14,9 @@
 	"scope": [
 		"vso.release"
 	],
+	"categories": [
+		"Build and release"
+	],
 	"description": "Install (deploy) MSI files from a specified directory, optionally passing environment variables as MSI properties",
 	"tags": [
 		"release",
